@@ -2,6 +2,8 @@ package com.ifiti.authapi.auth;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+import com.ifiti.authapi.auth.dto.RegisterResponse;
 
 @RestController
 
@@ -9,8 +11,10 @@ import org.springframework.http.ResponseEntity;
 public class AuthController {
 
     @PostMapping("/api/auth/register")
-    ResponseEntity<String> register(){
-        return ResponseEntity.ok("Registeration successful");
+    ResponseEntity<RegisterResponse> register(){
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body();
+
     }
 
 }
