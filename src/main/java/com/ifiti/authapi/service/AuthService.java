@@ -24,8 +24,8 @@ public class AuthService {
         }
         String passwordHash = passwordEncoder.encode(request.getPassword());
         User user = new User(
-                request.getEmail().trim(),
-                request.getName().trim().toLowerCase(),
+                request.getName().trim(),
+                request.getEmail().trim().toLowerCase(),
                 passwordHash,
                 "USER"
         );
