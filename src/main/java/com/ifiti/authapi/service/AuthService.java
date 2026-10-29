@@ -4,8 +4,8 @@ import com.ifiti.authapi.auth.dto.RegisterResponse;
 import org.springframework.stereotype.Service;
 import com.ifiti.authapi.user.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import com.ifiti.authapi.auth.dto.RegisterRequest;
-import com.ifiti.authapi.auth.dto.RegisterResponse;
+import com.ifiti.authapi.user.User;
+
 
 @Service
 public class AuthService {
@@ -29,6 +29,18 @@ public class AuthService {
                 passwordHash,
                 "USER"
         );
+
+        User savedUser = userRepository.save(user);
+
+        return new RegisterResponse(
+                savedUser.getId(),
+                savedUser.getName(),
+                savedUser.getEmail(),
+                savedUser.getRole()
+        );
+
+
+
     }
 
 }
